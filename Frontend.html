@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<head>
+<script src="Validation.js" type="text/javascript"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<link href = "Style.css" rel = "stylesheet">
+</head>
+
+<body>
+    <div class = "everything">
+<div class="calc-container">
+    <h1 id="main-content" >Calculators</h1>
+    <hr>
+    <div class="calculators-wrapper">
+        <div class="calculator">
+             <!-- <h2> How much can I afford ? </h2> -->
+          <button data-target="modal1" class="calc-btn hvr-bob modal-trigger"> Calculate Your Loan </button>
+          <div id="modal1" class="modal">
+                <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                      </div>   
+                <div class="modal-content "> 
+                        <h1>How Much Loan Can I Afford?</h1>
+                            <p>
+                                Enter the term, rate and desired payment; the loan total will be calculated for you.
+                                
+                            </p>
+                            <noscript>
+                                <p>
+                                    JavaScript must be enabled for this calculator to function.
+                                </p>
+                            </noscript>
+                            <div class="form-row">
+                                    <div class="slidecontainer">
+                                        <div>
+                                            <p>
+                                                <label>Desired Payment:</label>
+                                                <input class = "slider" type="range" id="loanAffordPayment" value="50" min="0" max="100000" 
+                                                    oninput="document.getElementById('dPayment').innerHTML = this.value" />
+                                                <label id="dPayment"></label>
+                                            </p>
+                                        </div>
+                                      </div>
+                                </div>
+                            
+                            <div>
+                                <div class = "form-row">
+                                <p>
+                                    <label>Annual Percentage Rate:</label>
+                                    <input class = "slider" type="range" id="loanAffordRate" value="0" min="0" max="25" 
+                                        oninput="document.getElementById('APR').innerHTML = this.value" />
+                                    <label id="APR"></label>
+                                </p>
+                            </div>
+                        </div>
+                            <div class="form-row">
+                               
+                                <div>
+                                    <p>
+                                        <label>Length of Loan:</label>
+                                        <input class = "slider" type="range" id="loanAffordMonths" value="0" min="0" max="100" 
+                                            oninput="document.getElementById('lengthLoan').innerHTML = this.value" />
+                                        <label id="lengthLoan"></label>
+                                    </p>
+                                </div>   
+                                                          
+                                <select id="loanAffordFrequency" aria-label="Dropdown for Months or Years">    
+                                    <option value="12" selected="selected">Months </option>
+                                    <option value="1">Years </option>
+                                </select>
+                            </div>
+                            </div> 
+                            </div>
+                            <div class="form-row">
+                                <div class="full-wrap">
+                                    <input class="compute calc-button" type="button"  class="calc-button" value="Compute" onclick="validateFormLoanAfford()"> <input type="button" value="Reset" class="calc-button reset" />
+                                </div>
+                                <hr />
+                                <div class="form-row">
+                                        <label for="amount">Loan Amount:</label>
+                                      <span>  $<input id="loanAffordAmount" type="number" autocomplete="off" min="1" step="0.01" placeholder="0.00" aria-label="Loan Amount" /> </span>
+                                    </div>
+                            </div>
+                            <p class="small">
+                                *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                            </p>
+                </div> 
+                        
+            </div>
+            </div>
+            
+        <div class="calculator"> 
+          <div class="title"> 
+                <!-- <h2> Loan Payment Calculator </h2> -->
+          </div>
+
+            <button data-target="modal2" class="calc-btn hvr-bob modal-trigger"> Calculate Your Payment </button>
+            <div id="modal2" class="modal">
+                    <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                          </div> 
+                <div class="modal-content "> 
+                        <h1>Calculate Your Loan Payment</h1>
+                            <p>
+                                Enter the term, rate and loan amount; the loan payment will be calculated for you.
+                            </p>
+                            <noscript>
+                                <p>
+                                    JavaScript must be enabled for this calculator to function.
+                                </p>
+                            </noscript>
+                        
+                            <div class="form-row">
+                                <div>
+                                    <p>
+                                        <label>Loan Amount:</label>
+                                        <input class = "slider" type="range" id="loanPaymentAmount" value="0" min="0" max="100" 
+                                            oninput="document.getElementById('loanAmount').innerHTML = this.value" />
+                                        <label id="loanAmount"></label>
+                                    </p>
+                                </div>  
+                            </div>
+                            
+                            <div class="form-row">
+                                <div>
+                                    <p>
+                                        <label>Annual Percentage Rate:</label>
+                                        <input class = "slider" type="range" id="loanPaymentRate" value="0" min="0" max="100" 
+                                            oninput="document.getElementById('paymentRate').innerHTML = this.value" />
+                                        <label id="paymentRate"></label>
+                                    </p>
+                                </div>  
+                            </div>
+
+                            <div class="form-row">
+                                <div>
+                                    <p>
+                                        <label>Length of Loan:</label>
+                                        <input class = "slider" type="range" id="loanPaymentMonths" value="0" min="0" max="100" 
+                                            oninput="document.getElementById('loanLength').innerHTML = this.value" />
+                                        <label id="loanLength"></label>
+                                    </p>
+                                </div>  
+                                <select id="loanPaymentFrequency" aria-label="Dropdown">
+                                    <option value="12" selected="selected">Months </option>
+                                    <option value="1">Years </option>
+                                </select>
+                            </span>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="full-wrap">
+                                    <input class="compute calc-button" type="button"  class="calc-button" value="Compute" onclick="validateFormLoanPayment()"> <input type="button" value="Reset" class="calc-button reset" />
+                                </div>
+                            </div>
+                                <hr />
+                            <div class="form-row">
+                                <label for="payment">Payment:</label>
+                                <span>  $<input id="loanPaymentPayment" type="number" autocomplete="off" min="1" step="0.01" placeholder="0.00" aria-label="Payment"/>  </span> 
+                            </div>
+                            <p class="small center">
+                                *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                            </p>
+                </div>                           
+                        
+          </div>
+          </div>
+          
+          <div class="calculator">
+                <!-- <div class="title"> <h2> Mortgage Refinance Calculator </h2> </div> -->
+                <button data-target="modal3" class="calc-btn hvr-bob modal-trigger"> Calculate Your Savings </button>
+                <div id="modal3" class="modal">
+                        <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                              </div> 
+                        <div class="modal-content">      
+                                <h1>Home Refinance Savings Calculator</h1>
+                                   <p>
+                                       This calculator will help you to decide whether or not you should refinance your current mortgage at a lower interest rate. 
+                                       Not only will this calculator calculate the monthly payment and net interest savings, but it will also calculate how many 
+                                       months it will take to break even on the closing costs.
+                                   </p>
+                                   <noscript>
+                                       <p>
+                                           JavaScript must be enabled for this calculator to function.
+                                       </p>
+                                   </noscript>
+                               
+                                   <h2>Your Current Mortgage Information</h2>
+                                   <div class="form-row">
+                                    <div>
+                                        <p>
+                                            <label>Principal:</label>
+                                            <input class = "slider" type="range" id="mortgageRefinancePrincipal" value="0" min="0" max="100" 
+                                                oninput="document.getElementById('principal').innerHTML = this.value" />
+                                            <label id="principal"></label>
+                                        </p>
+                                    </div>  
+                                       
+                                   </div>
+                                   <div class="form-row">
+                                    <div>
+                                        <p>
+                                            <label>Monthly Payment:</label>
+                                            <input class = "slider" type="range" id="mortgageRefinancePayment" value="0" min="0" max="100" 
+                                                oninput="document.getElementById('monthlyPayment').innerHTML = this.value" />
+                                            <label id="monthlyPayment"></label>
+                                        </p>
+                                    </div>  
+                                        
+                                   </div>
+                                   <div class="form-row">
+                                    <div>
+                                        <p>
+                                            <label>Interest Rate:</label>
+                                            <input class = "slider" type="range" id="mortgageRefinanceRate" value="0" min="0" max="100" 
+                                                oninput="document.getElementById('interestRate').innerHTML = this.value" />
+                                            <label id="interestRate"></label>
+                                        </p>
+                                    </div>  
+                                      
+                                   </div>
+                               
+                                   <h2>Refinancing Information</h2>
+                                   <div class="form-row">
+                                    <div>
+                                        <p>
+                                            <label>Interest Rate to Refinance:</label>
+                                            <input class = "slider" type="range" id="mortageRefinanceIntRate2" value="0" min="0" max="100" 
+                                                oninput="document.getElementById('refinanceInterest').innerHTML = this.value" />
+                                            <label id="refinanceInterest"></label>
+                                        </p>
+                                    </div>  
+                                      
+                                   </div>
+                                   <div class="form-row">
+                                    <div>
+                                        <p>
+                                            <label>Years to Refinance:</label>
+                                            <input class = "slider" type="range" id="mortgageRefinanceNper2" value="0" min="0" max="100" 
+                                                oninput="document.getElementById('refinanceYears').innerHTML = this.value" />
+                                            <label id="refinanceYears"></label>
+                                        </p>
+                                    </div>  
+                                      
+                                   </div>
+                                   <div class="form-row">
+                                    <div>
+                                        <p>
+                                            <label>Closing Costs to Refinance:</label>
+                                            <input class = "slider" type="range" id="loanAffordMonths" value="0" min="0" max="100" 
+                                                oninput="document.getElementById('closingCosts').innerHTML = this.value" />
+                                            <label id="closingCosts"></label>
+                                        </p>
+                                    </div>  
+                                       <span class="small">If you are unsure, multiply your current balance owed by 0.3.</span>
+                                   </div>
+                                   <div class="form-row">
+                                       <div class="full-wrap">
+                                           <input class="compute calc-button" type="button" id="mortgageRefinanceCompute" value="Compute" class="calc-button" /> <input type="button" value="Reset" class="calc-button reset" />
+                                       </div>
+                                   </div>
+                                   <hr />
+                                   <div class="form-row result1">
+                                       <label for="payment2">Refinanced Monthly Payment:</label>
+                                       <span id="mortgageRefinancePayment2" style="font-weight: bold;"></span>
+                                   </div>
+                                   <div class="form-row result2">
+                                       <label for="moSave">Monthly Savings:</label>
+                                       <span id="mortgageRefinanceMoSave" style="font-weight: bold;"></span>
+                                   </div>
+                                   <div class="form-row result1">
+                                       <label for="closeMo">Months to Pay Off Closing Costs:</label>
+                                       <span id="mortgageRefinanceCloseMo" style="font-weight: bold;"></span>
+                                   </div>
+                                   <div class="form-row result2">
+                                       <label for="origInt">Current Plan's Total Interest:</label>
+                                       <span id="mortgageRefinanceOrigInt" style="font-weight: bold;"></span>
+                                   </div>
+                                   <div class="form-row result1">
+                                       <label for="totInt2">Refinanced Plan's Total Interest:</label>
+                                       <span id="mortgageRefinanceTotInt2" style="font-weight: bold;"></span>
+                                   </div>
+                                   <div class="form-row result2">
+                                       <label for="intSave">Interest Saved by Refinancing:</label>
+                                       <span id="mortgageRefinanceIntSave" style="font-weight: bold;"></span>
+                                   </div>
+                                   <div class="form-row result1">
+                                       <label for="netSave">Net Savings (Minus Closing Costs):</label>
+                                       <span id="mortgageRefinanceNetSave" style="font-weight: bold;"></span>
+                                   </div>
+                                   <p id="mortgageRefinanceSummary">
+                                       
+                                   </p>
+                               
+                                   <p class="small center">
+                                       *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                                   </p>
+                            </div>
+                </div>
+            </div>
+                        <div class="calculator">
+                    <!-- <div class="title"> <h2> Mortgage Payment Calculator </h2> </div> -->
+                    <button data-target="modal4" class="calc-btn hvr-bob modal-trigger"> Calculate Your Mortgage Payment </button>
+                          <div id="modal4" class="modal">
+                                  <div class="modal-footer">
+                                          <a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                                        </div> 
+                          <div class="modal-content"> 
+                                  <h1>Bi-Weekly Mortgage Payment Calculator</h1>
+                                      <p>
+                                          This calculator will show you how much you can save if you make half of your mortgage payment every two weeks instead of making a full mortgage payment once a month. In effect, you are making one extra mortgage payment per year!
+                                      </p>
+                                      <noscript>
+                                          <p>
+                                              JavaScript must be enabled for this calculator to function.
+                                          </p>
+                                      </noscript>
+                                  
+                                      <div class="form-row">
+                                        <div>
+                                            <p>
+                                                <label>Mortgage Principal:</label>
+                                                <input class = "slider" type="range" id="mortgagePaymentPrincipal" value="0" min="0" max="100" 
+                                                    oninput="document.getElementById('mortgagePrincipal').innerHTML = this.value" />
+                                                <label id="mortgagePrincipal"></label>
+                                            </p>
+                                        </div>  
+                                         
+                                      <div class="form-row">
+                                        <div>
+                                            <p>
+                                                <label>Monthly Payment:</label>
+                                                <input class = "slider" type="range" id="mortgagePaymentPayment" value="0" min="0" max="100" 
+                                                    oninput="document.getElementById('monthlyMortgage').innerHTML = this.value" />
+                                                <label id="monthlyMortgage"></label>
+                                            </p>
+                                        </div>  
+                                         
+                                      <div class="form-row">
+                                        <div>
+                                            <p>
+                                                <label>Interest Rate:</label>
+                                                <input class = "slider" type="range" id="mortgagePaymentIntRate" value="0" min="0" max="100" 
+                                                    oninput="document.getElementById('intRate').innerHTML = this.value" />
+                                                <label id="intRate"></label>
+                                            </p>
+                                        </div>  
+                                         
+                                      </div>
+                                      <div class="form-row">
+                                          <div class="full-wrap">
+                                              <input type="button" id="mortgagePaymentCompute" value="Compute" class="calc-button" /> <input type="button" id="reset" value="Reset" class="calc-button" />
+                                          </div>
+                                      </div>
+                                      <hr />
+                                      <div class="form-row result1">
+                                          <label for="origInt">Current Total Interest Due:</label>
+                                          <span id="mortgagePaymentOrigInt" style="font-weight: bold;"></span>
+                                      </div>
+                                      <div class="form-row result2">
+                                          <label for="biwkInt">Bi-Weekly Total Interest Due:</label>
+                                          <span id="mortgagePaymentBiwkInt" style="font-weight: bold;"></span>
+                                      </div>
+                                      <div class="form-row result1">
+                                          <label for="intSave">Total Interest Savings:</label>
+                                          <span id="mortgagePaymentIntSave" style="font-weight: bold;"></span>
+                                      </div>
+                                      <p id="mortgagePaymentTime">
+                                          
+                                      </p>
+                                  
+                                      <p class="small center">
+                                          *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                                      </p>
+                                      </div>
+                                  
+                    </div>
+                    </div>
+          
+                    <div class="calculator">
+                          <!-- <div class="title"> <h2> Multiple deposit Calculator </h2> </div> -->
+                          <button data-target="modal5" class="calc-btn hvr-bob modal-trigger"> Calculate Multiple Deposits </button>
+                                  <div id="modal5" class="modal">
+                                          <div class="modal-footer">
+                                                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                                                </div> 
+                                  <div class="modal-content">       
+                                          <h1>Build Your Savings Calculator</h1>
+                                          <p>
+                                              To calculate the future value of a monthly investment, enter the beginning balance, the monthly dollar amount you 
+                                              plan to deposit, the interest rate you expect to earn, and the number of years you expect to continue making monthly 
+                                              deposits, then click the "Compute" button.
+                                          </p>
+                                      
+                                      <form action = "" method="post" onsubmit="multipleDepositComputeForm()">
+                                          <div class="form-row">
+                                            <div>
+                                                <p>
+                                                    <label>Intitial Investment (optional):</label>
+                                                    <input class = "slider" type="range" id="multipleDepositPrincipal" value="0" min="0" max="100" 
+                                                        oninput="document.getElementById('initialInvest').innerHTML = this.value" />
+                                                    <label id="initialInvest"></label>
+                                                </p>
+                                            </div>  
+                                             
+                                          </div>
+                                          <div class="form-row">
+                                            <div>
+                                                <p>
+                                                    <label>Amount to Add Monthly:</label>
+                                                    <input class = "slider" type="range" id="multipleDepositMoAdd" value="0" min="0" max="100" 
+                                                        oninput="document.getElementById('monthlyAdd').innerHTML = this.value" />
+                                                    <label id="monthlyAdd"></label>
+                                                </p>
+                                            </div>  
+                                              
+                                          </div>
+                                          <div class="form-row">
+                                            <div>
+                                                <p>
+                                                    <label>Annual Interest Rate:</label>
+                                                    <input class = "slider" type="range" id="multipleDepositInterest" value="0" min="0" max="100" 
+                                                        oninput="document.getElementById('yearlyInterest').innerHTML = this.value" />
+                                                    <label id="yearlyInterest"></label>
+                                                </p>
+                                            </div>  
+                                             
+                                          </div>
+                                          <div class="form-row">
+                                            <div>
+                                                <p>
+                                                    <label>Years to Accrue:</label>
+                                                    <input class = "slider" type="range" id="multipleDepositPayments" value="0" min="0" max="100" 
+                                                        oninput="document.getElementById('yearsAccrue').innerHTML = this.value" />
+                                                    <label id="yearsAccrue"></label>
+                                                </p>
+                                            </div>  
+                                          </div>
+                                          <div class="form-row">
+                                              <div class="full-wrap">
+                                                  <input type="button" id="multipleDepositCompute" value="Compute" class="calc-button"> <input type="button" value="Reset" class="calc-button reset">
+                                              </div>
+                                          </div>
+                                      </form>
+                                          <hr>
+                                          <div class="form-row result1" >
+                                              <label for="fv">Future Value:</label>
+                                              <span id="multipleDepositFv" style="font-weight: bold;">$0.00</span>
+                                          </div>
+                                          <div class="form-row result2">
+                                              <label for="totalint">Interest Earned:</label>
+                                              <span id="multipleDepositTotalint" style="font-weight: bold;">$0.00</span>
+                                          </div>
+                                      
+                                          <p class="small center">
+                                              *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                                          </p>	
+                                      </div>	
+                          </div>
+                          </div>
+          
+                          <div class="calculator">
+                          <!-- <div class="title"> <h2> Single Deposit Calculator </h2> </div> -->
+                          <button data-target="modal6" class="calc-btn hvr-bob modal-trigger"> Calculate Your Single Deposit </button>
+                                  <div id="modal6" class="modal">
+                                          <div class="modal-footer">
+                                                  <a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                                              </div> 
+                                  <div class="modal-content"> 
+                                          <h1>Future Value Interest Calculator</h1>
+                                              <p>
+                                                  To calculate the future value of a one-time, lump-sum investment, enter the dollar amount invested, the interest rate you expect to earn, and the number of years you expect to let the investment grow, then click the "Compute" button.
+                                              </p>
+                                              <noscript>
+                                                  <p>
+                                                      JavaScript must be enabled for this calculator to function.
+                                                  </p>
+                                              </noscript>
+                                              <form action = "" method="post" onsubmit="singleDepositComputeForm()"> 
+                                              <div class="form-row">
+                                                <div>
+                                                    <p>
+                                                        <label>Deposit Amount:</label>
+                                                        <input class = "slider" type="range" id="singleDeposit Principal" value="0" min="0" max="100" 
+                                                            oninput="document.getElementById('deposit').innerHTML = this.value" />
+                                                        <label id="deposit"></label>
+                                                    </p>
+                                                </div>  
+                                                  
+                                              </div>
+                                              <div class="form-row">
+                                                <div>
+                                                    <p>
+                                                        <label>Annual Interest Rate:</label>
+                                                        <input class = "slider" type="range" id="singleDepositInterest" value="0" min="0" max="100" 
+                                                            oninput="document.getElementById('annualInt').innerHTML = this.value" />
+                                                        <label id="annualInt"></label>
+                                                    </p>
+                                                </div>  
+                                                 
+                                              </div>
+                                              <div class="form-row">
+                                                <div>
+                                                    <p>
+                                                        <label>Years to Accrue:</label>
+                                                        <input class = "slider" type="range" id="singleDepositPayments" value="0" min="0" max="100" 
+                                                            oninput="document.getElementById('accrue').innerHTML = this.value" />
+                                                        <label id="accrue"></label>
+                                                    </p>
+                                                </div>  
+                                                  
+                                              </div>
+                                              <div class="form-row">
+                                                  <div class="full-wrap">
+                                                      <input type="button" value="Compute" id="singleDepositCompute" class="calc-button" /> <input type="button" value="Reset" class="calc-button reset" />
+                                                  </div>
+                                              </div>
+                                              <hr />
+                                              <div class="form-row result1" >
+                                                  
+                                                  <label for="fv">Future Value:</label>
+                                                  <span id="singleDepositFv" style="font-weight: bold;"></span>
+                                              </div>
+                                              <div class="form-row result2">
+                                                  <label for="totalint">Interest Earned:</label>
+                                                  <span id="singleDepositTotalint" style="font-weight: bold;"></span>
+                                              </div>
+                                          
+                                              <p class="small center">
+                                                  *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                                              </p>
+                                          </form>
+                                          </div>
+                          </div>
+                          </div>
+          
+          
+        </div>
+    </div>
+</div>
+
+</body>

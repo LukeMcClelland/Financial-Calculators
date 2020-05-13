@@ -1,0 +1,302 @@
+
+
+/* body {
+    background: blue;
+    padding: 50px;
+    text-align: center;
+} */
+.container.calculators ul li {
+    list-style: none;
+}
+
+.calculators {
+    padding-top: 50px;
+    text-align: center;
+  }
+  
+.calc-container {
+    font-family: sans-serif !important;
+    width: 87.777%;
+    margin: 0 auto;
+    padding: 5px 40px 20px 40px;
+    text-align: center;
+    color: blue;
+    width: 87.4975%;
+    margin-right: auto;
+    margin-left: auto;
+}
+    h1 {
+      text-align: left;
+    }
+
+    h2 {
+      font-family: sans-serif !important;
+      color: blue;
+
+    }
+
+    .calculator {
+        margin: 100px 50px 10px 10px;
+        width: 25%;
+        min-width: 250px;
+    }
+        .calc-btn {
+          font-size: 1.2em;
+          background: unset;
+          border: unset;
+          border-radius: 10px;
+          background-color: blue;
+          height: 100px;
+          width: 300px;
+          line-height: 50px;
+           color: #fff; 
+       }
+  
+
+    .result1 {
+      width: 90%;
+      padding: 10px 20px 10px 20px;
+      margin: 2px;
+      border-radius: 5px;
+      background: blue;
+      color: #fff;
+    }
+      label {
+        color: #fff;
+      }
+
+      .hover {
+        background: #dbdbdb;
+      }
+
+        label {
+          color: #000;
+        }
+
+.calculators-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+ .calculators .collapsible-header h3{
+    font-size: 1.1em;  
+    color: blue;
+    text-shadow: 2px 3px 2px #000;
+} 
+
+ .calc-container select {
+    display: inline;
+    width: auto;
+    margin-top: 5px;
+ }
+
+.calc-button {
+    background: blue;
+    border-radius: 5px;
+    box-shadow: 1px 1px 3px #c0c0c0;
+    padding: 10px 20px 10px 20px;
+    color: white;
+    transition: padding 0.6s;
+}
+.calc-button:hover {
+    cursor: pointer;
+    padding: 12px 22px 12px 22px;
+}
+
+
+.result2 {
+    width: 90%;
+    padding: 10px 20px 10px 20px;
+    margin: 2px;
+    border-radius: 5px;
+    background: #ccc;
+}
+.result2:hover {
+    background: #ededed;
+}
+
+.calc-item {
+    width: 80%;
+    margin: 25px auto;
+    
+}
+
+.calculators .collapsible-header {
+    justify-content: center;
+    background-color: blue ;
+    box-shadow: 2px 3px #ccc;
+  }
+
+  .calculators .collapsible-body {
+    background-color: #ccc;
+  }
+
+  .calculators label {
+    color: blue;
+    font-size: .8em;
+  }
+  .calculators li {
+    margin: 15px;
+  }
+
+  .calculators .collapsible-header, .calculators ul {
+    border-radius: 10px;
+  }
+
+/****** Calc in modal *******/
+
+.modal-content {
+      font-size: 2em;
+      line-height: 1.2em;
+      color: blue;
+      text-align: center;
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  margin: 20px auto;
+}
+  span {
+    display: flex;
+    line-height: 2.5em;
+  }
+
+  input {
+    margin: 0 10px;
+    font-size: 1em;
+}
+
+
+.calc-container {
+color: #000;
+}
+h2{
+  font-size: 1.8em;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+.btn-large {
+  background-color: blue;
+  font-size: .8em;
+  position: relative;
+  left: 50%;
+  transform: translatex(-50%);
+}
+
+label {
+  font-size: .8em;
+  color: #000;
+}
+
+#Calc-title {
+color:  blue;
+text-transform: uppercase;
+text-align: center;
+}
+
+
+.modal .modal-close {
+cursor: pointer;
+font-size: 2rem;
+}
+
+
+@media screen and (max-width: 1024px) {
+
+.calc-container .calculator {
+width: 45%;
+}
+
+}
+
+/* @media screen and (max-width: 640px)  */
+  .form-row {
+      flex-direction: column;
+}
+
+.calc-container {
+  width: 100%;
+}
+
+.modal .modal-content h1 {
+  font-size: 1.3em;
+}
+.calc-container .calculator {
+margin: unset;
+width: 95%;
+}
+.calc-container .calculator .calc-btn {
+padding: 0px 10px;
+line-height: 1.4em;
+margin: 10px auto;
+width: 100%;
+}
+
+    .form-row {
+        margin: unset;
+      }
+
+    .modal-close {
+      cursor: pointer;
+  }
+
+hr {
+  color: blue;
+  background-color: blue;
+  height: 1px;
+  border: none;
+  box-sizing: content-box;
+}
+
+@media screen and (max-width: 640px) {
+  .calc-container {
+    width: 100%;
+  }
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 15px;
+  border-radius: 5px;  
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+.everything{
+  text-align: center;
+}
