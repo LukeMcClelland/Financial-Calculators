@@ -10,6 +10,8 @@ function validateFormLoanAfford() {
     var months = $("#loanAffordMonths").val();
     var comma = ","
     var temparry = new Array(10)
+    var totalLoan = document.getElementById("loanAffordAmount").value;
+    console.log(totalLoan);
 
     temparray = amount.split(comma)
     amount = temparray.join("")
