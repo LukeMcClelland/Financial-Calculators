@@ -177,6 +177,7 @@ function validateFormLoanPayment() {
 //         console.log('Resetting...');
 //     });
 // });
+
 resets = document.querySelectorAll('#reset');
 inputs = document.querySelectorAll("input[type='number']");
 

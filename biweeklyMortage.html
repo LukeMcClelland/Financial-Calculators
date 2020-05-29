@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="Validation.js" type="text/javascript"></script>
+<script src = "Calculator.js" type = "text/javascript"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.js"></script>
+<link href = "Style.css" rel = "stylesheet">
+<html lang = "en">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+<title></title>
+</head>
+<body>
+    <div class="calculator">
+        <!-- <div class="title"> <h2> Mortgage Payment Calculator </h2> </div> -->
+        <button data-target="modal4" class="calc-btn hvr-bob modal-trigger"> Calculate Your Mortgage Payment </button>
+              <div id="modal4" class="modal">
+                      <div class="modal-footer">
+                              <a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                            </div> 
+              <div class="modal-content"> 
+                      <h1>Bi-Weekly Mortgage Payment Calculator</h1>
+                          <p>
+                              This calculator will show you how much you can save if you make half of your mortgage payment every two weeks instead of making a full mortgage payment once a month. In effect, you are making one extra mortgage payment per year!
+                          </p>
+                          <noscript>
+                              <p>
+                                  JavaScript must be enabled for this calculator to function.
+                              </p>
+                          </noscript>
+                      
+                          <div class="form-row">
+                              <label for="principal">Mortgage Principal:</label>
+                                <span> $ <input type="number" id="mortgagePaymentPrincipal" step="0.01" min="1"  placeholder="0.00" aria-label="Mortgage Principal"/> </span>
+                          </div>
+                          <div class="form-row">
+                              <label for="payment">Monthly Payment:</label>
+                                    <span>  $<input type="number" id="mortgagePaymentPayment" step="0.01" min="1"  placeholder="0.00" aria-label="Monthly Payment"/> </span> 
+                          </div>
+                          <div class="form-row">
+                              <label for="intRate">Interest Rate:</label>
+                                    <span>  <input type="number" id="mortgagePaymentIntRate" step="0.001" min="0.01"  placeholder="0.00" aria-label="Interest Rate"/>% </span> 
+                          </div>
+                          <div class="form-row">
+                              <div class="full-wrap">
+                                    <input type="button" id="mortgagePaymentCompute" value="Compute" class="calc-button" /> <input type="button" id="reset" value="Reset" class="calc-button" />
+                              </div>
+                          </div>
+                          <hr />
+                          <div class="form-row result1">
+                              <label for="origInt">Current Total Interest Due:</label>
+                                    <span id="mortgagePaymentOrigInt" style="font-weight: bold;"></span>
+                          </div>
+                          <div class="form-row result2">
+                              <label for="biwkInt">Bi-Weekly Total Interest Due:</label>
+                                    <span id="mortgagePaymentBiwkInt" style="font-weight: bold;"></span>
+                          </div>
+                          <div class="form-row result1">
+                              <label for="intSave">Total Interest Savings:</label>
+                                    <span id="mortgagePaymentIntSave" style="font-weight: bold;"></span>
+                          </div>
+                          <p id="mortgagePaymentTime">
+                              
+                          </p>
+                      
+                          <p class="small center">
+                              *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                          </p>
+                          </div>
+                      
+            </div>
+    </div>
+</div>
+</body>
+</html>

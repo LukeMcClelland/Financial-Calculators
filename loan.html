@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="Validation.js" type="text/javascript"></script>
+<script src = "Calculator.js" type = "text/javascript"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.css" rel="stylesheet">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/12.1.0/nouislider.js"></script>
+<link href = "Style.css" rel = "stylesheet">
+<html lang = "en">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>
+<title></title>
+</head>
+<body>
+    <div class="calc-container">
+        <h1 id="main-content" >Calculators</h1>
+        <hr>
+                
+              <button data-target="modal1" class="calc-btn hvr-bob modal-trigger"> Calculate Your Loan </button>
+              <div id="modal1" class="modal">
+                    <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">X</a>
+                          </div>   
+                    <div class="modal-content "> 
+                            <h1>How Much Loan Can I Afford?</h1>
+                                <p>
+                                    Enter the term, rate and desired payment; the loan total will be calculated for you.
+                                    
+                                </p>
+                                <noscript>
+                                    <p>
+                                        JavaScript must be enabled for this calculator to function.
+                                    </p>
+                                </noscript>
+                                <div class="form-row">
+                                        <div class="slidecontainer">
+                                            <div>
+                                                <p>
+                                                    <label>Desired Payment:</label>
+                                                    <input class = "slider" type="range" id="loanAffordPayment" value="50" min="0" max="100000" 
+                                                        oninput="document.getElementById('dPayment').innerHTML = '$' + this.value" />
+                                                        <label id="dPayment"></label>
+                                                </p>
+                                            </div>
+                                          </div>
+                                    </div>
+                                <div>
+                                    <div class = "form-row">
+                                    <p>
+                                        <label>Annual Percentage Rate:</label>
+                                        <input class = "slider" type="range" id="loanAffordRate" value="0" min="0" max="25" 
+                                            oninput="document.getElementById('APR').innerHTML = this.value + `%`" />
+                                            <label id="APR"></label>
+                                    </p>
+                                </div>
+                            </div>
+                                <div class="form-row">
+                                   
+                                    <div>
+                                        <p>
+                                            <label>Length of Loan:</label>
+                                            <input class = "slider" type="range" id="loanAffordMonths" value="0" min="0" max="100" 
+                                                oninput="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`" />
+                                                <label id="lengthLoan"></label>
+                                        </p>
+                                    </div>   
+                                                              
+                                    <select id="loanAffordFrequency" aria-label="Dropdown for Months or Years">    
+                                        <option value="12" selected="selected">Months </option>
+                                        <option value="1">Years </option>
+                                    </select>
+                                </div>
+                               
+                                <div class="form-row">
+                                    <div class="full-wrap">
+                                        <input id = "find" class="compute calc-button" type="button"  class="calc-button" value="Compute" onclick="validateFormLoanAfford()"/> <input type="button" value="Reset" class="calc-button reset"/>
+                                    </div>
+                                    <hr>
+                                    <div class="form-row">
+                                            <label for="amount">Loan Amount:</label>
+                                                <span>  $<input id="loanAffordAmount" type="number" autocomplete="off" min="1" step="0.01" placeholder="0.00" aria-label="Loan Amount" /> </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <canvas id="myChart" width="5" height="5" ></canvas>
+                            </div>
+                    </div>
+                                <script> 
+                                    window.addEventListener("click", drawGraph);
+                                    function drawGraph(){
+                                        console.log("here");
+                                        var ctx = document.getElementById('myChart').getContext('2d');
+                                        var sumLoan = document.getElementById("loanAffordAmount").value;            //total loan amount, principal is amount owed on loan for each time period (principal + balance = total)
+                                        var apr = document.getElementById("loanAffordRate").value / 100;
+                                        var lengthLoan = document.getElementById("loanAffordMonths").value;
+                                        var desiredPayment = document.getElementById("loanAffordPayment").value;
+                                    
+                                        var breakdownInterest = (apr / lengthLoan) * desiredPayment;                            //yearly interest on loan
+                                        var totalInterest = breakdownInterest * lengthLoan;
+                                        var monthlyPayment = (breakdownInterest/12) + (sumLoan/lengthLoan);            //wrong formula
+                                        var test = 3;
+                                            console.log("Monthly Payment: " + monthlyPayment);
+                                            console.log("Monthly Interest on Loan: " + totalInterest);
+                                            console.log("Desired Payment: " + desiredPayment);
+                                            console.log("Total Loan: " + sumLoan);
+                                            console.log("APR: " + apr);
+                                            console.log("Loan Length: " + lengthLoan);
+                                        var interestArray = new Array();
+                                        var totalInterestArray = new Array();
+                                        var remainingBalance = new Array();
+                                        var lengthArray = new Array();
+                                        var monthlyArray = new Array();
+                                        var total = new Array();
+                                            for(var i = 0; sumLoan > 0 ;i++)
+                                                {
+                                                    lengthArray[i] = i;
+                                                    interestArray[i] = totalInterest;
+                                                    totalInterestArray[i] = totalInterest * i;
+                                                    remainingBalance[i] = (sumLoan - monthlyPayment);
+                                                    sumLoan = remainingBalance[i];
+                                                    lengthArray[i] = lengthArray[i] + 1;
+                                                    monthlyArray[i] = monthlyPayment;
+                                                }
+                                
+                                                console.log("Total Interest Array: " + totalInterestArray);
+                                                console.log("Remaining Balance: " + remainingBalance);
+                                    //var balance = totalLoan - principal;                                                            
+                                    var chart = new Chart(ctx, {
+                                        // The type of chart we want to create
+                                        type: 'line',
+                                        // The data for our dataset
+                                        data: {
+                                            labels: lengthArray,
+                                            datasets: [
+                                            {
+                                                label: 'Total Interest Paid',
+                                                backgroundColor: 'rgb(255, 99, 132)',
+                                                borderColor: 'rgb(255, 99, 132)',
+                                                fill: false,
+                                                data: totalInterestArray
+                                            },
+                                            {
+                                                label: 'Monthly Interest',
+                                                backgroundColor: 'rgb(255, 99, 132)',
+                                                borderColor: 'rgb(255, 99, 132)',
+                                                fill: false,
+                                                data: interestArray
+                                            },
+                                            {
+                                                label: 'Monthly Payment',
+                                                backgroundColor: 'rgb(255, 99, 132)',
+                                                borderColor: 'rgb(255, 99, 132)',
+                                                fill: false,
+                                                data: monthlyArray
+                                            },
+                                            {
+                                                label: 'Remaining Balance',
+                                                backgroundColor: 'rgb(255, 99, 132)',
+                                                borderColor: 'rgb(255, 99, 132)',
+                                                fill: false,
+                                                data: remainingBalance
+                                            },
+                                            ]
+                                        },
+                                    
+                                        // Configuration options go here
+                                        options: {
+                                            scales: {
+                                                yAxes: [{
+                                                    ticks: {
+                                                        suggestedMin: 50,
+                                                        suggestedMax: 100
+                                                    }
+                                                }]
+                                            }
+                                        }
+                                    });
+                                }
+                            </script>
+                                <p class="small">
+                                    *The accuracy of this calculator and its applicability to your circumstances is not guaranteed. Results should be discussed with a qualified professional before any product purchases or loan commitments are made.
+                                </p>
+                    </div> 
+                            
+                </div>
+            </div>
+</body>
+</html>

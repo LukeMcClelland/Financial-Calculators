@@ -300,3 +300,7 @@ hr {
 .everything{
   text-align: center;
 }
+.center{
+  text-align: center;
+  align-items: center;
+}
