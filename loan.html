@@ -32,6 +32,21 @@
                                         JavaScript must be enabled for this calculator to function.
                                     </p>
                                 </noscript>
+
+                                <div class="container">
+                                    <div class="row">
+                                        <div class = "col-md-4">
+                                            <form>
+                                                <label for="loanAffordPayment">Desired Payment:</label>
+                                                <input type="text" id="loanAffordPayment" name="loanAffordPayment"  oninput="document.getElementById('dPayment').innerHTML = '$' + this.value"><br><br>
+                                                <label for="loanAffordRate">Annual Percentage Rate:</label>
+                                                <input type="text" id="loanAffordRate" name="loanAffordRate" oninput="document.getElementById('APR').innerHTML = this.value + `%`"><br><br>
+                                                <label for="loanAffordMonths">Length of Loan:</label>
+                                                <input type="text" id="loanAffordMonths" name="loanAffordMonths"  oninput="document.getElementById('lengthLoan').innerHTML = this.value + ` months/years`"><br><br>
+                                              </form>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="form-row">
                                         <div class="slidecontainer">
                                             <div>
